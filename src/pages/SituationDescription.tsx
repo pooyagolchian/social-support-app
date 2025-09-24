@@ -429,10 +429,13 @@ const SituationDescription: React.FC = () => {
 												alignSelf: "flex-start",
 												mt: 1,
 												[isRtl ? "ml" : "mr"]: 1,
+												bottom: "20px",
+												right: isRtl ? "0" : "10px",
+												position: "absolute",
 											}}
 										>
 											{isRegenerating ? (
-												<CircularProgress size={20} />
+												<CircularProgress size={10} />
 											) : (
 												<AutoFixHighIcon />
 											)}
