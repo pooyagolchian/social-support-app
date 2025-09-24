@@ -15,8 +15,6 @@ export const getPersonalInfoSchema = (t: (key: string) => string) =>
 			.string()
 			.min(1, t("validation.phoneRequired"))
 			.refine((value) => {
-				// UAE mobile number validation
-				// The value will be stored as 971XXXXXXXXX
 				const digits = value.replace(/\D/g, "");
 				const uaePattern = /^971?5[0-9]{8}$/;
 				return uaePattern.test(digits);

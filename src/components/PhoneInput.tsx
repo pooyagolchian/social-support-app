@@ -29,23 +29,23 @@ const PhoneInput = ({
 	const isRtl = i18n.dir() === "rtl";
 
 	useEffect(() => {
-		// Initialize with formatted value
+		
 		setDisplayValue(formatPhoneNumber(value || ""));
 	}, [value]);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const input = event.target.value;
 
-		// Only allow digits and spaces
+		
 		const cleanInput = input.replace(/[^\d\s]/g, "");
 
-		// Format the number
+		
 		const formatted = formatPhoneNumber(cleanInput);
 		setDisplayValue(formatted);
 
-		// Store the full number with country code for validation
+		
 		const digitsOnly = cleanInput.replace(/\D/g, "");
-		// Always prepend 971 for storage
+		
 		const fullNumber = digitsOnly ? `971${digitsOnly}` : "";
 		onChange(fullNumber);
 	};
@@ -63,20 +63,17 @@ const PhoneInput = ({
 			placeholder="56 673 6236"
 			sx={{
 				"& .MuiInputBase-root": {
-					// Force LTR direction for the entire input container
 					direction: "ltr",
 				},
 				"& .MuiInputBase-input": {
-					// Always LTR for phone numbers
 					direction: "ltr",
 					textAlign: "left",
 				},
 
 				"& .MuiFormHelperText-root": {
-					// Keep helper text aligned with the overall layout direction
 					textAlign: isRtl ? "left" : "left",
 					direction: isRtl ? "rtl" : "ltr",
-					// Ensure proper spacing
+
 					marginLeft: isRtl ? 0 : undefined,
 					marginRight: isRtl ? 0 : undefined,
 				},
@@ -107,7 +104,7 @@ const PhoneInput = ({
 				),
 			}}
 			inputProps={{
-				maxLength: 11, // "56 673 6236"
+				maxLength: 11,
 				inputMode: "tel",
 				pattern: "[0-9 ]*",
 			}}
