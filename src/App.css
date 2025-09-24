@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+
+[dir="rtl"] .MuiButton-startIcon {
+	margin-right: 0;
+	margin-left: 8px;
+}
+
+[dir="rtl"] .MuiButton-endIcon {
+	margin-left: 0;
+	margin-right: 8px;
+}
+
+[dir="rtl"] .MuiInputBase-input,
+[dir="rtl"] .MuiFormLabel-root {
+	text-align: right;
+}
+
+[dir="rtl"] .MuiDialog-paper .MuiIconButton-root {
+	right: auto;
+	left: 8px;
+}
+
+[dir="rtl"] .MuiCardContent-root {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+[dir="rtl"] .MuiFormControl-root {
+	direction: rtl;
+}
+
+/* Responsive header and chip styles are handled via Tailwind utility classes in the component. */
+/* Add custom styles here if you need further control. */

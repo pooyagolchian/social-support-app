@@ -1,0 +1,31 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+	"files": {
+		"includes": [
+			"**",
+			"!node_modules",
+			"!dist",
+			"!build",
+			"!coverage",
+			"!.cache",
+			"!.vite",
+			"!.next",
+			"!.nuxt",
+			"!.vercel",
+			"!.output",
+			"!.turbo",
+			"!.parcel-cache",
+			"!tsconfig.node.json",
+			"!tsconfig.app.json"
+		]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "double"
+		}
+	}
+}
