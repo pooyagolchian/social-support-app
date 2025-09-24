@@ -133,5 +133,55 @@
 		"employmentCircumstancesMin": "Please describe your employment circumstances in at least 10 characters",
 		"reasonForApplyingRequired": "Reason for Applying is required",
 		"reasonForApplyingMin": "Please explain your reason for applying in at least 10 characters"
+	},
+
+	"errorPages": {
+		"notFound": {
+			"title": "Page Not Found",
+			"description": "Sorry, the page you are looking for does not exist or has been moved."
+		},
+		"serverError": {
+			"title": "Internal Server Error",
+			"description": "Something went wrong on our end. Please try again later or contact support if the problem persists."
+		},
+		"forbidden": {
+			"title": "Access Forbidden",
+			"description": "You don't have permission to access this resource."
+		},
+		"unauthorized": {
+			"title": "Unauthorized Access",
+			"description": "You need to be logged in to access this page."
+		},
+		"backToHome": "Back to Home",
+		"tryAgain": "Try Again"
+	},
+
+	"errorBoundaryTest": {
+		"pageTitle": "Error Boundary Test Page",
+		"infoAlert": "Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.",
+		"willBeCaught": {
+			"title": "✅ These WILL be caught by Error Boundary:",
+			"throwSyncError": "Throw Sync Error (During Render)"
+		},
+		"wontBeCaught": {
+			"title": "⚠️ These will NOT be caught by Error Boundary:",
+			"throwAsyncError": "Throw Async Error (setTimeout)",
+			"promiseRejection": "Unhandled Promise Rejection",
+			"eventHandlerError": "Error in Event Handler",
+			"note": "Note: These errors appear in the console but won't trigger the error boundary UI"
+		},
+		"howToTest": {
+			"title": "How to Test:",
+			"step1": "Click the red buttons to trigger errors that WILL be caught",
+			"step2": "You'll see the error boundary UI with a reload button",
+			"step3": "Orange buttons show errors that won't be caught (check console)",
+			"step4": "Use browser DevTools to see error details"
+		},
+		"errorMessages": {
+			"testError": "This is a test error to demonstrate error boundaries!",
+			"asyncError": "Async error - this will NOT be caught by error boundary!",
+			"promiseError": "Unhandled promise rejection",
+			"eventError": "Error in event handler - check console"
+		}
 	}
 }
