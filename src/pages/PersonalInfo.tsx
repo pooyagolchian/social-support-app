@@ -13,7 +13,7 @@ import {
 	TextField,
 	Typography,
 } from "@mui/material";
-import { useId, useMemo } from "react";
+import { useEffect, useId, useMemo } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -61,6 +61,9 @@ const PersonalInfo = () => {
 		dispatch(updatePersonalInfo(data));
 		navigate(ROUTES.FAMILY_FINANCIAL);
 	};
+
+
+	
 
 	return (
 		<Card sx={{ mt: 3 }}>

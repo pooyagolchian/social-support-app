@@ -47,8 +47,8 @@ const FamilyFinancialInfo = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FamilyFinancialForm>({
-		resolver: zodResolver(familyFinancialSchema),
-		defaultValues: familyFinancial,
+		resolver: zodResolver(familyFinancialSchema) as any,
+		defaultValues: familyFinancial as any,
 	});
 
 	const onSubmit = (data: FamilyFinancialForm) => {

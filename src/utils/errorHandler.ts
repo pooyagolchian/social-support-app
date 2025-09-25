@@ -33,7 +33,7 @@ export const handleApiError = (error: unknown, t: TFunction): string => {
 	}
 
 	if (axios.isAxiosError(error) && error.code === "ECONNABORTED") {
-		return t("errors.timeout");
+		return t("errors.timeout" as any);
 	}
 
 	if (error instanceof Error) {

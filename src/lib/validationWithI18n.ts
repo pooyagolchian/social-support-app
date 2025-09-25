@@ -31,9 +31,9 @@ export const getFamilyFinancialSchema = (t: (key: string) => string) =>
 			.transform(Number)
 			.pipe(z.number().min(0, t("validation.dependentsMinimum"))),
 		employmentStatus: z.enum(
-			["employed", "unemployed", "self-employed", "retired", "student"],
+			["employed", "unemployed", "self-employed", "retired", "student"] as const,
 			{
-				required_error: t("validation.employmentStatusRequired"),
+				message: t("validation.employmentStatusRequired"),
 			},
 		),
 		monthlyIncome: z
@@ -41,8 +41,8 @@ export const getFamilyFinancialSchema = (t: (key: string) => string) =>
 			.min(1, t("validation.monthlyIncomeRequired"))
 			.transform(Number)
 			.pipe(z.number().min(0, t("validation.monthlyIncomeMinimum"))),
-		housingStatus: z.enum(["owned", "rented", "shared", "homeless"], {
-			required_error: t("validation.housingStatusRequired"),
+		housingStatus: z.enum(["owned", "rented", "shared", "homeless"] as const, {
+			message: t("validation.housingStatusRequired"),
 		}),
 	});
 
@@ -64,15 +64,15 @@ export const getSituationDescriptionSchema = (t: (key: string) => string) =>
 
 export const usePersonalInfoSchema = () => {
 	const { t } = useTranslation();
-	return getPersonalInfoSchema(t);
+	return getPersonalInfoSchema((key: string) => t(key as any));
 };
 
 export const useFamilyFinancialSchema = () => {
 	const { t } = useTranslation();
-	return getFamilyFinancialSchema(t);
+	return getFamilyFinancialSchema((key: string) => t(key as any));
 };
 
 export const useSituationDescriptionSchema = () => {
 	const { t } = useTranslation();
-	return getSituationDescriptionSchema(t);
+	return getSituationDescriptionSchema((key: string) => t(key as any));
 };

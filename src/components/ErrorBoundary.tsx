@@ -1,9 +1,9 @@
-import { Box, Button, Typography, Paper, Container } from "@mui/material";
-import { ErrorBoundary as ReactErrorBoundary } from "react-error-boundary";
-import { useTranslation } from "react-i18next";
 import ErrorIcon from "@mui/icons-material/Error";
 import RefreshIcon from "@mui/icons-material/Refresh";
+import { Box, Button, Container, Paper, Typography } from "@mui/material";
 import type { ReactNode } from "react";
+import { ErrorBoundary as ReactErrorBoundary } from "react-error-boundary";
+import { useTranslation } from "react-i18next";
 
 interface ErrorFallbackProps {
 	error: Error;
@@ -42,10 +42,7 @@ function ErrorFallback({ error, resetErrorBoundary }: ErrorFallbackProps) {
 						maxWidth: 500,
 					}}
 				>
-					<ErrorIcon
-						color="error"
-						sx={{ fontSize: 64, marginBottom: 2 }}
-					/>
+					<ErrorIcon color="error" sx={{ fontSize: 64, marginBottom: 2 }} />
 					<Typography variant="h4" color="error" gutterBottom>
 						{t("errorBoundary.title")}
 					</Typography>
@@ -84,34 +81,22 @@ function ErrorFallback({ error, resetErrorBoundary }: ErrorFallbackProps) {
 						>
 							{t("errorBoundary.tryAgainButton")}
 						</Button>
-						<Button
-							variant="outlined"
-							color="secondary"
-							onClick={handleReload}
-						>
+						<Button variant="outlined" color="secondary" onClick={handleReload}>
 							{t("errorBoundary.reloadButton")}
 						</Button>
 					</Box>
 				</Paper>
 			</Box>
-			</Container>
+		</Container>
 	);
 }
 
-function logErrorToService(error: Error, errorInfo: { componentStack: string }) {
+function logErrorToService(
+	error: Error,
+	errorInfo: { componentStack: string },
+) {
+	// We can send the log to an error reporting service here
 	console.error("Error logged:", error, errorInfo);
-
-	// TODO: Send error to logging service (e.g., Sentry, LogRocket, etc.)
-	// Example:
-	// if (window.Sentry) {
-	//   window.Sentry.captureException(error, {
-	//     contexts: {
-	//       react: {
-	//         componentStack: errorInfo.componentStack,
-	//       },
-	//     },
-	//   });
-	// }
 }
 
 interface ErrorBoundaryProps {
@@ -122,7 +107,7 @@ export default function ErrorBoundary({ children }: ErrorBoundaryProps) {
 	return (
 		<ReactErrorBoundary
 			FallbackComponent={ErrorFallback}
-			onError={logErrorToService}
+			onError={(error, errorInfo) => logErrorToService(error, { componentStack: errorInfo.componentStack || '' })}
 			onReset={() => {
 				// Optional: Clear any error state in your app
 				console.log("Error boundary reset");
