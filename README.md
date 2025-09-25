@@ -2,265 +2,248 @@
 
 ## Overview
 
-This is a multi-step form wizard for a government social support portal, allowing citizens to apply for financial assistance with smart AI help. The app is built with React, Vite, Redux Toolkit, Tailwind CSS, and integrates OpenAI GPT for writing assistance.
+A modern, accessible multi-step form wizard for government social support applications. Citizens can apply for financial assistance with the help of AI-powered writing suggestions. Built with React 19, TypeScript, Redux Toolkit, and OpenAI GPT-3.5 integration.
 
----
+### Key Features
 
-## Design Patterns and Architecture
+- 🚀 **Multi-step Form Wizard** - Three-step progressive form with validation
+- 🤖 **AI Writing Assistant** - OpenAI GPT-3.5 integration for content suggestions
+- 🌐 **Multilingual Support** - English and Arabic with RTL support
+- 💾 **Persistent State** - Form data survives page refreshes via Redux Persist
+- ♿ **Accessible Design** - WCAG compliant with keyboard navigation
+- 📱 **Responsive UI** - Mobile-first design with MUI and Tailwind CSS
+- ✅ **Real-time Validation** - Zod schemas with React Hook Form
+- 🎨 **Modern Stack** - React 19, TypeScript, Vite for optimal DX
 
-This project follows a modular, component-based architecture that promotes separation of concerns and reusability.
+## Tech Stack
 
-- **Component-Based Architecture**: The UI is built with React, following a component-based approach. Components are organized into two main categories: page components and shared components. Page components are responsible for rendering the main content of each step in the application, while shared components are reusable UI elements that can be used across multiple pages.
-
-- **State Management**: The app uses Redux Toolkit for state management, which provides a centralized store for the application's state. This makes it easy to manage the state of the multi-step form and persist it across page reloads. The use of Redux also helps to decouple the application's state from the UI, making it easier to test and maintain.
-
-- **API Factory Pattern**: The app uses an API Factory pattern to create a reusable API client with Axios. This pattern allows for a centralized configuration of the API client, including the base URL, timeout, and interceptors. This makes it easy to handle API requests and responses in a consistent and predictable way.
-
-- **Modular Design**: The project is organized into modules, with each module responsible for a specific feature or functionality. This makes it easy to navigate the codebase and understand the different parts of the application. The use of modules also helps to reduce the bundle size of the application by allowing for code-splitting and lazy loading.
-
----
+| Category | Technologies |
+|----------|-------------|
+| **Frontend Framework** | React 19 + TypeScript 5.8 |
+| **Build Tool** | Vite 7.1 |
+| **State Management** | Redux Toolkit + Redux Persist |
+| **Routing** | React Router 7.9 |
+| **Forms** | React Hook Form + Zod |
+| **UI Libraries** | MUI 5 + Tailwind CSS 4 |
+| **Internationalization** | i18next + react-i18next |
+| **API Client** | Axios |
+| **AI Integration** | OpenAI GPT-3.5 |
+| **Testing** | Jest + React Testing Library |
+| **Code Quality** | Biome formatter |
 
 ## Architecture
 
-## Project Structure
+### Design Patterns
 
-```text
-social-support-app/
-├── public/
-│   └── vite.svg
-├── src/
-│   ├── assets/
-│   │   └── react.svg
-│   ├── components/
-│   │   ├── ErrorBoundary.tsx
-│   │   ├── Header.tsx
-│   │   ├── Layout.tsx
-│   │   └── ui/
-│   │       ├── button.tsx
-│   │       ├── input.tsx
-│   │       ├── label.tsx
-│   │       ├── progress.tsx
-│   │       ├── select.tsx
-│   │       └── textarea.tsx
-│   ├── i18n/
-│   │   ├── index.ts
-│   │   └── locales/
-│   │       ├── ar.json
-│   │       └── en.json
-│   ├── lib/
-│   │   ├── apiFactory.ts
-│   │   ├── schema.ts
-│   │   ├── utils.ts
-│   │   └── schema/
-│   │       └── index.ts
-│   ├── pages/
-│   │   ├── FamilyFinancialInfo.tsx
-│   │   ├── PersonalInfo.tsx
-│   │   └── SituationDescription.tsx
-│   ├── services/
-│   │   └── openaiService.ts
-│   ├── store/
-│   │   ├── store.ts
-│   │   └── slices/
-│   │       ├── familyFinancialInfoSlice.ts
-│   │       ├── familyFinancialSlice.ts
-│   │       ├── personalInfoSlice.ts
-│   │       └── situationDescriptionSlice.ts
-│   ├── validation/
-│   │   └── schemas.ts
-│   ├── App.css
-│   ├── index.css
-│   ├── main.tsx
-│   └── vite-env.d.ts
-├── babel.config.js
-├── biome.json
-├── components.json
-├── index.html
-├── jest.config.js
-├── package.json
-├── pnpm-lock.yaml
-├── project.md
-├── README.md
-├── tsconfig.app.json
-├── tsconfig.json
-├── tsconfig.node.json
-└── vite.config.ts
-```
+- **Component-Based Architecture** - Modular React components with clear separation of concerns
+- **Redux State Pattern** - Centralized state management with Redux Toolkit slices
+- **API Factory Pattern** - Reusable Axios client with interceptors for error handling
+- **Form Validation Pattern** - Zod schemas integrated with React Hook Form
+- **Error Boundary Pattern** - Graceful error handling with fallback UI
+- **Persistent State Pattern** - Redux Persist for localStorage integration
 
-### Tree-shaking & Modular Design
-
-- The app uses Vite for fast builds and automatic tree-shaking, ensuring only used code is included in the final bundle.
-- Code is organized by feature and responsibility, making it easy to import only what you need.
-- UI components are split into reusable modules for optimal bundle size.
-
----
-
-## Scaffolding
-
-```
-
-src/
- components/         # Layout, Header, UI elements
- pages/              # Step pages: PersonalInfo, FamilyFinancialInfo, SituationDescription
- store/              # Redux store & slices
- services/           # openaiService.ts (API integration)
- i18n/               # i18n config & translations
- validation/         # Zod schemas
- lib/                # Utilities, API factory
-public/               # Static assets
-
-```
-
----
-
-## Multilingual Support
-
-This project supports multiple languages using the `react-i18next` library. The translation files are located in the `src/i18n/locales` directory, with each language having its own JSON file.
-
-To add a new language, you need to create a new JSON file in the `src/i18n/locales` directory with the language code as the filename (e.g., `fr.json` for French). You can then add the translations for the new language to this file, following the same structure as the existing translation files.
-
----
-
-## Testing
-
-This project uses Jest and React Testing Library for testing. The tests are located in the `src` directory, with each component having its own test file.
-
-### Running Tests
-
-To run all tests:
-
-```bash
-pnpm test
-```
-
-To run tests in watch mode:
-
-```bash
-pnpm test:watch
-```
-
-To run tests with coverage report:
-
-```bash
-pnpm test:coverage
-```
-
-### Code Coverage
-
-The project maintains comprehensive test coverage for critical components and services. The coverage report is generated in the `coverage` directory after running tests with coverage.
-
-#### Current Coverage Status
-
-- **Overall Coverage**: ~57% statement coverage
-- **Key Areas with High Coverage**:
-  - `FamilyFinancialInfo.tsx`: 100% coverage
-  - `PersonalInfo.tsx`: 95.45% coverage
-  - `openaiService.ts`: 100% coverage
-  - `App.tsx`: 100% coverage
-  - `Layout.tsx`: 100% coverage
-
-#### Viewing Coverage Reports
-
-After running tests with coverage, you can:
-
-1. View the terminal output for a summary
-2. Open `coverage/lcov-report/index.html` in a browser for an interactive HTML report
-3. Check `coverage/lcov.info` for detailed line-by-line coverage data
-
-#### Test Structure
-
-Tests are organized alongside their components:
+### Project Structure
 
 ```
 src/
-├── pages/
-│   ├── PersonalInfo.tsx
-│   ├── PersonalInfo.test.tsx
-│   ├── FamilyFinancialInfo.tsx
-│   └── FamilyFinancialInfo.test.tsx
-├── components/
-│   ├── Layout.tsx
-│   ├── Layout.test.tsx
-│   ├── Header.tsx
-│   └── Header.test.tsx
-├── services/
-│   ├── openaiService.ts
-│   └── openaiService.test.ts
+├── components/         # Shared UI components
+│   ├── ErrorBoundary.tsx    # Global error handling
+│   ├── Header.tsx           # App header with language switcher
+│   ├── Layout.tsx           # Main layout wrapper
+│   └── CompletionStats.tsx  # Form completion tracker
+├── constants/          # App constants
+│   └── routes.ts            # Route definitions
+├── i18n/               # Internationalization
+│   ├── config.ts            # i18next configuration
+│   └── locales/
+│       ├── en/translation.json  # English translations
+│       └── ar/translation.json  # Arabic translations
+├── lib/                # Utility libraries
+│   ├── apiFactory.ts        # Axios instance factory
+│   └── schema/              # Shared schemas
+├── pages/              # Page components (form steps)
+│   ├── PersonalInfo.tsx          # Step 1: Personal details
+│   ├── FamilyFinancialInfo.tsx   # Step 2: Family & financial
+│   ├── SituationDescription.tsx  # Step 3: Situation with AI
+│   └── ErrorPages/               # Error page components
+├── router/             # Routing configuration
+│   └── AppRouter.tsx        # Main router component
+├── services/           # External services
+│   └── openaiService.ts     # OpenAI API integration
+├── store/              # Redux store
+│   ├── store.ts             # Store configuration
+│   └── slices/              # Redux slices
+├── utils/              # Utility functions
+│   └── errorHandler.ts      # Error handling utilities
+└── validation/         # Form validation
+    └── schemas.ts           # Zod validation schemas
 ```
 
-#### Testing Best Practices
+### Application Flow
 
-- Tests focus on user interactions and behavior
-- Mock external dependencies (API calls, routing, etc.)
-- Use React Testing Library queries for accessible testing
-- Maintain test isolation - each test should be independent
-- Test both success and error scenarios
+```mermaid
+graph LR
+    A[Home /] --> B[Step 1: Personal Info]
+    B --> C[Step 2: Family & Financial]
+    C --> D[Step 3: Situation Description]
+    D --> E[Submit & Reset]
+```
 
----
+For detailed flow diagrams, see [docs/flow-diagram.md](./docs/flow-diagram.md).
 
 ## Getting Started
 
-### 1. Install dependencies
+### Prerequisites
 
+- Node.js 18+
+- pnpm 8+ (recommended) or npm/yarn
+- OpenAI API key for AI features
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/social-support-app.git
+cd social-support-app
+```
+
+2. Install dependencies:
 ```bash
 pnpm install
 ```
 
-### 2. Configure OpenAI API Key
-
-Create a `.env` file in the project root:
-
-```env
-VITE_OPENAI_API_KEY="your-openai-api-key"
+3. Configure environment variables:
+```bash
+# Create .env file in project root
+echo 'VITE_OPENAI_API_KEY="your-openai-api-key"' > .env
 ```
 
-You can get your API key from [OpenAI dashboard](https://platform.openai.com/api-keys). The app uses this key to generate AI suggestions in Step 3.
-
-### 3. Run the app
-
+4. Start the development server:
 ```bash
 pnpm dev
 ```
 
-App will be available at `http://localhost:3000` (default Vite port).
-
----
+The app will be available at `http://localhost:3000`.
 
 ## Usage
 
-1. Fill out each step of the form. Progress is shown at the top.
-2. In Step 3, use the "Help Me Write" button for AI-generated suggestions.
-3. Data is saved in Redux and persists across refreshes.
-4. Switch language using the top-right menu (English/Arabic).
+### Form Steps
 
----
+1. **Step 1: Personal Information**
+   - Full name, National ID
+   - Date of birth, Phone number
+   - Address details
 
-## Environment Variables
+2. **Step 2: Family & Financial Information**
+   - Marital status, Number of dependents
+   - Monthly income and expenses
+   - Employment status
 
-- `VITE_OPENAI_API_KEY`: Your OpenAI API key for GPT integration.
+3. **Step 3: Situation Description**
+   - Current situation narrative
+   - Reason for assistance request
+   - AI-powered writing suggestions
 
----
+### Features Guide
 
-## Tech Stack
+- **Language Switching**: Use the language selector in the header to switch between English and Arabic
+- **Progress Tracking**: Visual stepper shows current step and progress
+- **AI Assistant**: Click "Help Me Write" in Step 3 for AI-generated content suggestions
+- **Form Persistence**: Your data is automatically saved and restored on page refresh
+- **Validation**: Real-time field validation with helpful error messages
 
-- React + Vite
-- Redux Toolkit + redux-persist
-- Tailwind CSS + MUI
-- React Hook Form + Zod
-- Axios (API calls)
-- React-i18next (i18n)
+## Development
 
----
+### Commands
+
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start dev server on port 3000 |
+| `pnpm build` | Build for production |
+| `pnpm preview` | Preview production build |
+| `pnpm test` | Run all tests |
+| `pnpm test:watch` | Run tests in watch mode |
+| `pnpm test:coverage` | Generate coverage report |
+| `pnpm format` | Format code with Biome |
+
+### Code Style
+
+- **Formatter**: Biome with tab indentation and double quotes
+- **TypeScript**: Strict mode enabled
+- **Imports**: Use `@/` alias for src directory
+- **Components**: Functional components with TypeScript
+
+### Testing
+
+The project uses Jest and React Testing Library for testing:
+
+- Tests are located alongside components (e.g., `ComponentName.test.tsx`)
+- Current coverage: ~57% overall
+- Key areas with high coverage:
+  - FamilyFinancialInfo: 100%
+  - PersonalInfo: 95.45%
+  - OpenAI Service: 100%
+
+View coverage report: `pnpm test:coverage` then open `coverage/lcov-report/index.html`
+
+## API Documentation
+
+### OpenAI Integration
+
+The app integrates with OpenAI's GPT-3.5 model for AI-powered writing assistance:
+
+```typescript
+// src/services/openaiService.ts
+getOpenAISuggestion(apiKey: string, prompt: string): Promise<string>
+```
+
+- **Model**: GPT-3.5-turbo
+- **Temperature**: 0.7 (balanced creativity)
+- **Max Tokens**: 300 (concise responses)
+- **Error Handling**: Custom ApiError class with status codes
+
+## Performance
+
+- **Bundle Size**: Optimized with Vite's tree-shaking
+- **Code Splitting**: Route-based splitting for optimal loading
+- **State Persistence**: Redux Persist with localStorage
+- **Lazy Loading**: Components loaded on demand
+
+## Security
+
+- **API Keys**: Stored in environment variables
+- **Input Validation**: Zod schemas on all forms
+- **XSS Protection**: React's built-in escaping
+- **Error Boundaries**: Graceful error handling
+
+## Browser Support
+
+- Chrome/Edge 90+
+- Firefox 88+
+- Safari 14+
+- Mobile browsers (iOS Safari, Chrome Android)
 
 ## Contributing
 
-1. Fork the repo
-2. Create a feature branch
-3. Commit your changes
-4. Open a PR
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Run tests (`pnpm test`)
+5. Format code (`pnpm format`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
 
----
+### Commit Guidelines
+
+- Run tests before committing: `pnpm test`
+- Format code: `pnpm format`
+- Add translations to both `en/translation.json` and `ar/translation.json`
+- Follow existing patterns for new components
 
 ## License
 
 MIT
+
+## Support
+
+For issues, questions, or suggestions, please open an issue on GitHub.
