@@ -25,12 +25,13 @@ import { Controller, useForm, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import type { z } from "zod";
 import { ROUTES } from "@/constants/routes";
 import { getSituationDescriptionSchema } from "@/lib/validationWithI18n";
 import { getOpenAISuggestion } from "@/services/openaiService";
 import { updateSituationDescription } from "@/store/slices/situationDescriptionSlice";
-import type { RootState } from "@/store/store";
+import { type RootState, resetAllForms } from "@/store/store";
 import { handleApiError } from "@/utils/errorHandler";
 
 type SituationDescriptionForm = z.infer<
@@ -117,9 +118,23 @@ const SituationDescription: React.FC = () => {
 
 	const onSubmit = (data: SituationDescriptionForm) => {
 		dispatch(updateSituationDescription(data));
+
 		// Mock API call
 		setTimeout(() => {
-			alert(t("dataSubmittedSuccessfully"));
+			// Show success toast
+			toast.success(t("dataSubmittedSuccessfully"), {
+				description: t("formSubmittedDescription"),
+				action: {
+					label: t("close"),
+					onClick: () => {},
+				},
+			});
+
+			// Reset all form data
+			dispatch(resetAllForms());
+
+			// Navigate to the first page
+			navigate(ROUTES.HOME);
 		}, 500);
 	};
 

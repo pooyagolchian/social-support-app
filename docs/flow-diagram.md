@@ -36,28 +36,6 @@ graph TD
     SubmitForm --> Success([Success Message])
 ```
 
-## Error Handling Flow
-
-```mermaid
-graph TD
-    APICall[API Call] --> CheckStatus{Check Response Status}
-    CheckStatus -->|401| Unauthorized[Show Unauthorized Error]
-    CheckStatus -->|403| Forbidden[Show Forbidden Error]
-    CheckStatus -->|404| NotFound[Show Not Found Error]
-    CheckStatus -->|500| ServerError[Show Server Error]
-    CheckStatus -->|502-504| ServiceUnavailable[Show Service Unavailable]
-    CheckStatus -->|Success| ProcessResponse[Process Response]
-
-    Unauthorized --> ErrorBoundary[Error Boundary]
-    Forbidden --> ErrorBoundary
-    NotFound --> ErrorBoundary
-    ServerError --> ErrorBoundary
-    ServiceUnavailable --> ErrorBoundary
-
-    ErrorBoundary --> DisplayError[Display Error Message]
-    DisplayError --> ReloadOption[Offer Reload Button]
-```
-
 ## Data Flow
 
 ```mermaid

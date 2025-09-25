@@ -79,6 +79,8 @@
 	"loading": "جاري التحميل...",
 	"noCountriesFound": "لم يتم العثور على دول",
 	"dataSubmittedSuccessfully": "تم إرسال البيانات بنجاح!",
+	"formSubmittedDescription": "تم إرسال طلبك بنجاح. سيتم إعادة توجيهك لبدء طلب جديد.",
+	"close": "إغلاق",
 	"openAIKeyNotConfigured": "مفتاح OpenAI غير مهيأ. يرجى تعيين VITE_OPENAI_API_KEY في ملف .env الخاص بك.",
 	"couldNotGetSuggestion": "لم نتمكن من الحصول على اقتراح من الذكاء الاصطناعي.",
 	"error": "خطأ",

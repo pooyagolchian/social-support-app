@@ -79,6 +79,8 @@
 	"loading": "Loading...",
 	"noCountriesFound": "No countries found",
 	"dataSubmittedSuccessfully": "Data submitted successfully!",
+	"formSubmittedDescription": "Your application has been submitted successfully. You will be redirected to start a new application.",
+	"close": "Close",
 	"openAIKeyNotConfigured": "OpenAI API key is not configured. Please set VITE_OPENAI_API_KEY in your .env file.",
 	"couldNotGetSuggestion": "Could not get a suggestion from the AI.",
 	"error": "Error",
