@@ -1,3 +1,4 @@
+import axios from "axios";
 import type { TFunction } from "i18next";
 
 export class ApiError extends Error {
@@ -29,6 +30,10 @@ export const handleApiError = (error: unknown, t: TFunction): string => {
 			default:
 				return t("errors.genericError");
 		}
+	}
+
+	if (axios.isAxiosError(error) && error.code === "ECONNABORTED") {
+		return t("errors.timeout");
 	}
 
 	if (error instanceof Error) {

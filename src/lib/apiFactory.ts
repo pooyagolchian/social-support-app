@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ApiError } from "../utils/errorHandler";
 
 const api = axios.create({
 	baseURL: "",
@@ -8,16 +9,18 @@ const api = axios.create({
 api.interceptors.response.use(
 	(response) => response,
 	(error) => {
-		if (error.response) {
-			return Promise.reject(
-				error.response.data?.error?.message || error.message,
-			);
-		} else if (error.request) {
-			return Promise.reject("No response from server.");
-		} else if (error.code === "ECONNABORTED") {
-			return Promise.reject("Request timed out.");
+		if (axios.isAxiosError(error)) {
+			if (error.response) {
+				return Promise.reject(
+					new ApiError(
+						error.response.status,
+						error.response.data?.error?.message || error.message,
+						error.response.data,
+					),
+				);
+			}
 		}
-		return Promise.reject(error.message);
+		return Promise.reject(error);
 	},
 );
 
