@@ -78,7 +78,7 @@ const SituationDescription: React.FC = () => {
 		defaultValues: situationDescription,
 	});
 
-	// Keep Redux in sync when the user has entered data (skip initial mount)
+	
 	const isFirstRender = useRef(true);
 	const currentFinancialSituation = useWatch({
 		control,
@@ -91,7 +91,6 @@ const SituationDescription: React.FC = () => {
 	const reasonForApplying = useWatch({ control, name: "reasonForApplying" });
 
 	useEffect(() => {
-		// Skip dispatch on initial mount
 		if (isFirstRender.current) {
 			isFirstRender.current = false;
 			return;
@@ -103,7 +102,6 @@ const SituationDescription: React.FC = () => {
 			reasonForApplying,
 		};
 
-		// Only dispatch if at least one field has non-empty text
 		const hasData = Object.values(watchedValues ?? {}).some((v) =>
 			typeof v === "string" ? v.trim() !== "" : Boolean(v),
 		);
@@ -113,15 +111,13 @@ const SituationDescription: React.FC = () => {
 				updateSituationDescription(watchedValues as SituationDescriptionForm),
 			);
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentFinancialSituation, employmentCircumstances, reasonForApplying]);
 
 	const onSubmit = (data: SituationDescriptionForm) => {
 		dispatch(updateSituationDescription(data));
 
-		// Mock API call
+		
 		setTimeout(() => {
-			// Show success toast
 			toast.success(t("dataSubmittedSuccessfully"), {
 				description: t("formSubmittedDescription"),
 				action: {
@@ -130,10 +126,8 @@ const SituationDescription: React.FC = () => {
 				},
 			});
 
-			// Reset all form data
 			dispatch(resetAllForms());
 
-			// Navigate to the first page
 			navigate(ROUTES.HOME);
 		}, 500);
 	};

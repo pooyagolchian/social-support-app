@@ -95,7 +95,7 @@ function logErrorToService(
 	error: Error,
 	errorInfo: { componentStack: string },
 ) {
-	// We can send the log to an error reporting service here
+	
 	console.error("Error logged:", error, errorInfo);
 }
 
@@ -109,7 +109,7 @@ export default function ErrorBoundary({ children }: ErrorBoundaryProps) {
 			FallbackComponent={ErrorFallback}
 			onError={(error, errorInfo) => logErrorToService(error, { componentStack: errorInfo.componentStack || '' })}
 			onReset={() => {
-				// Optional: Clear any error state in your app
+				
 				console.log("Error boundary reset");
 			}}
 		>
