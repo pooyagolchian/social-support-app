@@ -122,7 +122,7 @@ const CountrySelect = ({
 									<img
 										loading="lazy"
 										width="20"
-										src={selectedCountry}
+										src={selectedCountry.flagUrl}
 										alt={selectedCountry.name}
 										style={{ borderRadius: 2 }}
 									/>
