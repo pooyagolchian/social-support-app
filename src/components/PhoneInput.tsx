@@ -60,7 +60,7 @@ const PhoneInput = ({
 			error={error}
 			helperText={helperText || t("phoneHelperText")}
 			fullWidth={fullWidth}
-			placeholder="56 673 6236"
+			placeholder={t("phonePlaceholder")}
 			sx={{
 				"& .MuiInputBase-root": {
 					direction: "ltr",

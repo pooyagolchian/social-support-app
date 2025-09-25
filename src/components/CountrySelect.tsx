@@ -85,22 +85,26 @@ const CountrySelect = ({
 							direction: isRtl ? "rtl" : "ltr",
 						}}
 					>
-					{option.flagUrl ? (
-						<img
-							loading="lazy"
-							width="20"
-							src={option.flagUrl}
-							alt={option.name}
-							style={{ borderRadius: 2 }}
-						/>
-					) : (
-						<span style={{ fontSize: "20px" }}>{option.flag}</span>
-					)}
-					<Typography>{getCountryName(option)}</Typography>
-					<Typography variant="body2" color="text.secondary" sx={{ ml: "auto" }}>
-						({option.code})
-					</Typography>
-				</Box>
+						{option.flagUrl ? (
+							<img
+								loading="lazy"
+								width="20"
+								src={option.flagUrl}
+								alt={option.name}
+								style={{ borderRadius: 2 }}
+							/>
+						) : (
+							<span style={{ fontSize: "20px" }}>{option.flag}</span>
+						)}
+						<Typography>{getCountryName(option)}</Typography>
+						<Typography
+							variant="body2"
+							color="text.secondary"
+							sx={{ ml: "auto" }}
+						>
+							({option.code})
+						</Typography>
+					</Box>
 				);
 			}}
 			renderInput={(params) => (
@@ -118,12 +122,14 @@ const CountrySelect = ({
 									<img
 										loading="lazy"
 										width="20"
-										src={selectedCountry.flagUrl}
+										src={selectedCountry}
 										alt={selectedCountry.name}
 										style={{ borderRadius: 2 }}
 									/>
 								) : (
-									<span style={{ fontSize: "20px" }}>{selectedCountry.flag}</span>
+									<span style={{ fontSize: "20px" }}>
+										{selectedCountry.flag}
+									</span>
 								)}
 							</Box>
 						),

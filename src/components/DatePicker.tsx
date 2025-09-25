@@ -21,7 +21,7 @@ export const DatePicker = ({
 	error,
 	helperText,
 }: DatePickerProps) => {
-	const { i18n } = useTranslation();
+	const { i18n, t } = useTranslation();
 	const isArabic = i18n.language === "ar";
 
 	const handleDateChange = (newValue: Dayjs | null) => {
@@ -42,15 +42,15 @@ export const DatePicker = ({
 					label={label}
 					value={value ? dayjs(value) : null}
 					onChange={handleDateChange}
-					format="DD/MM/YYYY"
+					format={t("dateFormat")}
 					slotProps={{
 						textField: {
 							fullWidth: true,
 							error: error,
 							helperText: helperText,
-							placeholder: "DD/MM/YYYY",
+							placeholder: t("datePlaceholder"),
 							inputProps: {
-								placeholder: isArabic ? "يي/شش/سسسس" : "DD/MM/YYYY",
+								placeholder: t("datePlaceholder"),
 								style: {
 									textAlign: isArabic ? "right" : "left",
 									direction: isArabic ? "rtl" : "ltr",

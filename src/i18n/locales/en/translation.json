@@ -7,6 +7,8 @@
 	"name": "Name",
 	"nationalId": "National ID",
 	"dateOfBirth": "Date of Birth",
+	"dateFormat": "DD/MM/YYYY",
+	"datePlaceholder": "DD/MM/YYYY",
 	"gender": "Gender",
 	"male": "Male",
 	"female": "Female",
@@ -17,6 +19,7 @@
 	"country": "Country",
 	"phone": "Phone",
 	"phoneHelperText": "Enter mobile number after +971",
+	"phonePlaceholder": "56 673 6236",
 	"email": "Email",
 	"maritalStatus": "Marital Status",
 	"single": "Single",
@@ -66,6 +69,10 @@
 	"modifyPrompt": "Modify your situation (optional)",
 	"modifyPromptHelp": "Enter additional details or modify your situation, then click Regenerate for a new suggestion",
 	"language": "Language",
+	"languages": {
+		"english": "English",
+		"arabic": "العربية"
+	},
 	"completionStatus": "Completion Status",
 	"overall": "Overall Progress",
 	"triggerErrorBoundary": "Test Error Boundary (Demo)",
@@ -78,7 +85,8 @@
 	"errorBoundary": {
 		"title": "Something went wrong",
 		"defaultMessage": "An unexpected error occurred.",
-		"reloadButton": "Reload Page"
+		"reloadButton": "Reload Page",
+		"tryAgainButton": "Try Again"
 	},
 	"errors": {
 		"unauthorized": "You are not authorized to access this resource. Please login.",

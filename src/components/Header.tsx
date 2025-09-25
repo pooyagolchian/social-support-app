@@ -25,8 +25,8 @@ const Header = ({ step }: { step: number }) => {
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
 	const languages = {
-		en: "English",
-		ar: "العربية",
+		en: t("languages.english"),
+		ar: t("languages.arabic"),
 	};
 
 	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -117,13 +117,13 @@ const Header = ({ step }: { step: number }) => {
 							onClick={() => changeLanguage("en")}
 							selected={i18n.language === "en"}
 						>
-							English
+							{t("languages.english")}
 						</MenuItem>
 						<MenuItem
 							onClick={() => changeLanguage("ar")}
 							selected={i18n.language === "ar"}
 						>
-							العربية
+							{t("languages.arabic")}
 						</MenuItem>
 					</Menu>
 				</div>
